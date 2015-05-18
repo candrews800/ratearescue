@@ -88,3 +88,13 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+
+View::composer('*', function($view){
+    $private = require app_path().'/config/private.php';
+
+    $view->with(array(
+        'adsense_client_key' => $private['adsense_client_key'],
+        'adsense_ad_slot' => $private['adsense_ad_slot']
+    ));
+});
