@@ -4,12 +4,20 @@ class Pet{
 
     public $name, $description, $animal, $photos, $breed, $pet_id, $last_available;
 
-    public function __construct(PetRecord $record){
+    public function __construct(PetRecord $record = null){
+        if($record == null){
+            return 0;
+        }
         $this->photos = $record->photos;
         $this->name = $record->name;
         $this->description = $record->description;
         $this->animal = $record->animal;
         $this->pet_id = $record->pet_id;
+        $this->breed = $record->breed;
+        $this->zipcode = $record->zipcode;
+        $zip = Zipcode::where('zip_code', '=', $record->zipcode)->first();
+        $this->city = ucwords(strtolower($zip->city));
+        $this->state = strtoupper($zip->state_prefix);
         $this->last_available = $record->updated_at->format('M d, Y');
     }
 

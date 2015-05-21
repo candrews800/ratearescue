@@ -11,7 +11,6 @@ class PetRecord extends Eloquent{
     }
 
     public function store($pet_data){
-        dd($pet_data);
         $this->pet_id = $pet_data['id']['$t'];
 
         if($record = self::alreadyExists($this->pet_id)){
@@ -19,6 +18,13 @@ class PetRecord extends Eloquent{
         }
 
         $this->name = $pet_data['name']['$t'];
+        if(isset($pet_data['breeds']['breed'][0]['$t'])){
+            $this->breed = $pet_data['breeds']['breed'][0]['$t'];
+        }
+        else{
+            $this->breed = $pet_data['breeds']['breed']['$t'];
+        }
+
         if(isset($pet_data['description']['$t'])){
             $this->description = $pet_data['description']['$t'];
         }

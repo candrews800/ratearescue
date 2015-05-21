@@ -6,9 +6,10 @@ class RatingsTableSeeder extends Seeder {
     {
         DB::table('ratings')->delete();
 
-        Rating::create(['rating_slug' => 'cute', 'rating_text' => 'much cute']);
-        Rating::create(['rating_slug' => 'love', 'rating_text' => 'needs luv']);
+        Rating::create(['rating_slug' => 'cute', 'rating_text' => 'very cute']);
+        Rating::create(['rating_slug' => 'tiny', 'rating_text' => 'lil tiny']);
         Rating::create(['rating_slug' => 'tuff', 'rating_text' => 'so tuff']);
+        Rating::create(['rating_slug' => 'happy', 'rating_text' => 'super happy']);
     }
 
 }

@@ -59,7 +59,7 @@ class PetController extends BaseController {
         $ratings = Rating::all();
         $votes = Session::get('votes', null);
 
-        return View::make('top')->with(array(
+        return View::make('pet')->with(array(
             'pets' => $pets,
             'ratings' => $ratings,
             'votes' => $votes,
@@ -130,7 +130,7 @@ class PetController extends BaseController {
 
         if($available){
             $pet_record->stillAvailable();
-            return 1;
+            return $pet_record->updated_at->format('M d, Y');
         }
         return 0;
     }

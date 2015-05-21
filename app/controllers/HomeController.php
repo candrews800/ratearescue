@@ -5,7 +5,7 @@ class HomeController extends BaseController {
 	public function index()
 	{
         $cute_rating = Rating::where('rating_slug', '=', 'cute')->first();
-        $top_ids = Vote::select(DB::raw('pet_id, count(rating_id) as total_votes'))->where('rating_id', '=', $cute_rating->id)->groupBy('pet_id')->orderBy('total_votes', 'DESC')->take(3)->get();
+        $top_ids = Vote::select(DB::raw('pet_id, count(rating_id) as total_votes'))->where('rating_id', '=', $cute_rating->id)->groupBy('pet_id')->orderBy('total_votes', 'DESC')->take(25)->get();
         $top_cute = [];
         foreach($top_ids as $key=>$id){
             $record = PetRecord::where('pet_id', '=', $id->pet_id)->first();
@@ -13,17 +13,17 @@ class HomeController extends BaseController {
             $top_cute[$key]->total_votes = $id->total_votes;
         }
 
-        $love_rating = Rating::where('rating_slug', '=', 'love')->first();
-        $top_ids = Vote::select(DB::raw('pet_id, count(rating_id) as total_votes'))->where('rating_id', '=', $love_rating->id)->groupBy('pet_id')->orderBy('total_votes', 'DESC')->take(3)->get();
-        $top_love = [];
+        $tiny_rating = Rating::where('rating_slug', '=', 'tiny')->first();
+        $top_ids = Vote::select(DB::raw('pet_id, count(rating_id) as total_votes'))->where('rating_id', '=', $tiny_rating->id)->groupBy('pet_id')->orderBy('total_votes', 'DESC')->take(25)->get();
+        $top_tiny = [];
         foreach($top_ids as $key=>$id){
             $record = PetRecord::where('pet_id', '=', $id->pet_id)->first();
-            $top_love[] = new Pet($record);
-            $top_love[$key]->total_votes = $id->total_votes;
+            $top_tiny[] = new Pet($record);
+            $top_tiny[$key]->total_votes = $id->total_votes;
         }
 
         $tuff_rating = Rating::where('rating_slug', '=', 'tuff')->first();
-        $top_ids = Vote::select(DB::raw('pet_id, count(rating_id) as total_votes'))->where('rating_id', '=', $tuff_rating->id)->groupBy('pet_id')->orderBy('total_votes', 'DESC')->take(3)->get();
+        $top_ids = Vote::select(DB::raw('pet_id, count(rating_id) as total_votes'))->where('rating_id', '=', $tuff_rating->id)->groupBy('pet_id')->orderBy('total_votes', 'DESC')->take(25)->get();
         $top_tuff = [];
         foreach($top_ids as $key=>$id){
             $record = PetRecord::where('pet_id', '=', $id->pet_id)->first();
@@ -31,11 +31,21 @@ class HomeController extends BaseController {
             $top_tuff[$key]->total_votes = $id->total_votes;
         }
 
+        $happy_rating = Rating::where('rating_slug', '=', 'happy')->first();
+        $top_ids = Vote::select(DB::raw('pet_id, count(rating_id) as total_votes'))->where('rating_id', '=', $happy_rating->id)->groupBy('pet_id')->orderBy('total_votes', 'DESC')->take(25)->get();
+        $top_happy = [];
+        foreach($top_ids as $key=>$id){
+            $record = PetRecord::where('pet_id', '=', $id->pet_id)->first();
+            $top_happy[] = new Pet($record);
+            $top_happy[$key]->total_votes = $id->total_votes;
+        }
+
 
 		return View::make('index')->with(array(
             'top_cute' => $top_cute,
-            'top_love' => $top_love,
-            'top_tuff' => $top_tuff
+            'top_tiny' => $top_tiny,
+            'top_tuff' => $top_tuff,
+            'top_happy' => $top_happy
         ));
 	}
 }

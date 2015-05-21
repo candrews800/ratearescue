@@ -1,24 +1,29 @@
-</div>
-<div class="col-xs-12 col-md-4 col-lg-3">
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- Rate a Rescue Responsive -->
-    <ins class="adsbygoogle"
-         style="display:block;"
-         data-ad-client="{{ $adsense_client_key }}"
-         data-ad-slot="{{ $adsense_ad_slot }}"
-         data-ad-format="auto"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-</div>
-</div>
-<footer class="footer">
-    <p>&copy; Rate a Rescue 2015</p>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-6">
+                <nav>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-xs-6">
+                <div id="petfinder-link">
+                    <a href="https://www.petfinder.com"><img src="https://www.petfinder.com/banner-images/widgets/40.jpg" border="0" alt="Pet Adoption" /></a>
+                </div>
+            </div>
+            <div class="col-xs-12">
+                <div id="copyright">
+                    © Copyright 2015
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
-</div> <!-- Container -->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{{ url('assets/javascripts/bootstrap.min.js') }}"></script>
