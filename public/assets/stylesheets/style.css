@@ -5870,13 +5870,13 @@ header input[type=text] {
   width: 100%;
   position: relative;
   padding: 25px 0;
-  height: 400px;
-  text-align: center;
-  /* ensures the image is always in the h-middle */ }
+  height: 400px; }
   #pet .main-crop {
     width: 100%;
     overflow: hidden;
-    height: 100%; }
+    height: 100%;
+    text-align: center;
+    /* ensures the image is always in the h-middle */ }
     #pet .main-crop img {
       max-height: 350px;
       position: relative;

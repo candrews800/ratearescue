@@ -90,11 +90,17 @@
     </div>
 </section>
 
+<div class="container">
+    <div class="row">
+
 <div id="ratings-list">
     <a href="#" class="rating first vote btn" data-vote="cute">Cute</a>
     <a href="#" class="rating second vote btn" data-vote="tuff">Tuff</a>
     <a href="#" class="rating third vote btn" data-vote="tiny">Tiny</a>
     <a href="#" class="rating fourth vote btn" data-vote="happy">Happy</a>
+</div>
+
+    </div>
 </div>
 
 <div id="comment-wrapper">
@@ -108,7 +114,12 @@
 <script>
     var activeIndex = 0;
     var pets = {{ json_encode($pets) }};
+    @if($votes)
     var votes = {{ json_encode($votes) }};
+    @else
+    var votes = [];
+    @endif
+
 
     // Check Pet Availability
     $(function(){
@@ -126,7 +137,7 @@
         $.ajax(url)
             .complete(function(data){
                 if(data){
-                    $('#pet-data').text(data);
+                    $('#pet-date').text(data.responseText);
                 }
                 else{
                     $('#pet-data').text('This pet seems to be unavailable. Please check the Petfinder link below.');
@@ -209,6 +220,7 @@
         $('#pet-breed').text(pets[activeIndex].breed);
         photos = pets[activeIndex].photos.split('|p|');
         $('#pet-img').attr('src', photos[0]);
+        $('#pet-date').text(pets[activeIndex].last_available);
         $('#view-pet-finder').attr('href', 'https://www.petfinder.com/petdetail/'+pets[activeIndex].pet_id);
 
         $('#current-num').text(activeIndex + 1);
@@ -251,4 +263,9 @@
         @endif
 
     }
+
+    // Load Page Variables on load
+    $(function(){
+        updatePet();
+    });
 </script>

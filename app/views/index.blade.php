@@ -48,7 +48,7 @@
             @foreach($top_cute as $key=>$pet)
                 <?php $photos = $pet->getPhotos(); ?>
             <div class="outer" style="left: <?php echo $key * 265;?>px">
-                <a href="#">
+                <a href="{{ url('top/cute/'.$pet->pet_id) }}">
                     <img src="{{ $photos[0] }}" />
                 </a>
             </div>
@@ -67,7 +67,7 @@
             @foreach($top_tuff as $key=>$pet)
                 <?php $photos = $pet->getPhotos(); ?>
                 <div class="outer" style="left: <?php echo $key * 265;?>px">
-                    <a href="#">
+                    <a href="{{ url('top/tuff/'.$pet->pet_id) }}">
                         <img src="{{ $photos[0] }}" />
                     </a>
                 </div>
@@ -86,7 +86,7 @@
             @foreach($top_tiny as $key=>$pet)
                 <?php $photos = $pet->getPhotos(); ?>
                 <div class="outer" style="left: <?php echo $key * 265;?>px">
-                    <a href="#">
+                    <a href="{{ url('top/tiny/'.$pet->pet_id) }}">
                         <img src="{{ $photos[0] }}" />
                     </a>
                 </div>
@@ -105,7 +105,7 @@
             @foreach($top_happy as $key=>$pet)
                 <?php $photos = $pet->getPhotos(); ?>
                 <div class="outer" style="left: <?php echo $key * 265;?>px">
-                    <a href="#">
+                    <a href="{{ url('top/happy/'.$pet->pet_id) }}">
                         <img src="{{ $photos[0] }}" />
                     </a>
                 </div>

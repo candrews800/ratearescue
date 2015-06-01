@@ -308,12 +308,13 @@ header input[type=text]{
   position: relative;
   padding: 25px 0;
   height: 400px;
-  text-align: center; /* ensures the image is always in the h-middle */
 
   .main-crop{
     width: 100%;
     overflow: hidden;
     height: 100%;
+    text-align: center; /* ensures the image is always in the h-middle */
+
 
     img{
       max-height: 350px;
