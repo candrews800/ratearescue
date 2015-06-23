@@ -78,7 +78,7 @@
                 <div id="pet-info">
                     <h1 id="pet-name">{{ $pets[0]->name }}</h1>
                     <p id="pet-details"><span id="pet-animal">{{ $pets[0]->animal }}</span> • <span id="pet-breed">{{ $pets[0]->breed }}</span></p>
-                    <p id="pet-location"><span id="pet-city">{{ $pets[0]->city }}</span>, <span id="pet-state">{{ $pets[0]->state }}</span> • <span id="pet-zipcode">33024</span></p>
+                    <p id="pet-location"><span id="pet-zipcode">{{ $pets[0]->zipcode }}</span></p>
                     <p id="pet-availability">Available since <span id="pet-date">{{ $pets[0]->last_available }}</span> <span id="pet-checkavailability" class="fa fa-refresh"></span></p>
                     <p><a id="view-pet-finder" href="https://www.petfinder.com/petdetail/{{ $pets[0]->pet_id }}/">View <span class="pet-name">{{ $pets[0]->name }}</span> on Petfinder.com</a></p>
                     <div id="share-buttons">

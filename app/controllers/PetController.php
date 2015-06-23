@@ -1,5 +1,7 @@
 <?php
 
+use Zipcode\Zipcode;
+
 class PetController extends BaseController {
 
     public function getNearbyJSON($zipcode = null, $animal = null, $offset = null){
@@ -71,7 +73,7 @@ class PetController extends BaseController {
     {
         $zipcode = Input::get('zipcode');
         // Invalid Zipcodes Return to same page
-        if(Zipcode::where('zip_code', '=', $zipcode)->count() < 1){
+        if( ! Zipcode::get($zipcode)){
             return Redirect::back();
         }
         $animal = Input::get('animal');

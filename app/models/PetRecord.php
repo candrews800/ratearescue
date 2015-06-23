@@ -1,5 +1,7 @@
 <?php
 
+use Zipcode\Zipcode;
+
 class PetRecord extends Eloquent{
     protected $table = 'pet_records';
 
@@ -55,10 +57,10 @@ class PetRecord extends Eloquent{
 
     public static function getNearby($zipcode = null, $animal = null, $offset = null){
         if($zipcode == null){
-            App::about(500, 'No Zipcode Provided.');
+            App::about(404, 'No Zipcode Provided.');
         }
-        $nearby_zip_codes = Zipcode::getCloseZips($zipcode);
-        $nearby_zip_codes[] = $zipcode;
+        $nearby_zip_codes = Zipcode::near($zipcode, 25, false);
+
         $records = self::whereIn('zipcode', $nearby_zip_codes);
         if($animal){
             $records->where('animal', '=', $animal);
@@ -67,9 +69,11 @@ class PetRecord extends Eloquent{
             $records->skip($offset);
         }
         $records = $records->take(25)->get();
+
         if(sizeof($records) < 25){
             $finder = new PetFinder();
             $pet_data = $finder->findNearby($zipcode, $animal, $offset);
+
             foreach($pet_data as $data){
                 new self($data);
             }
