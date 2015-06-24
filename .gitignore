@@ -1,5 +1,6 @@
-.idea/
+.idea/workspace.xml
 /bootstrap/compiled.php
+/app/config/database.php
 /app/config/private.php
 /vendor
 composer.phar
