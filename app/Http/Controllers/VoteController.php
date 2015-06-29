@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Rating;
+use App\Vote;
+use Illuminate\Support\Facades\Session;
+
 class VoteController extends Controller{
 
     public function cast($pet_id, $rating_slug){
