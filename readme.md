@@ -1,3 +1,3 @@
 ## RateARescue
 
-See the full site at http://zzipcode.com
+See the full site at http://ratearescue.com
